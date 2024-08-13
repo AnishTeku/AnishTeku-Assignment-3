@@ -6,7 +6,6 @@
 This repository features a project dedicated to developing and fine-tuning a BERT-based model for text classification on movie review. The project utilizes the rotten tomotoes dataset from Hugging Face for training the model.
 
 ## Table of Contents
-- [Abstract](#Abstract)
 - [Introduction](#Introduction)
 - [Dataset Overview)](#Dataset-overview)
 - [Data Preprocessing](#Data-Preprocessing)
