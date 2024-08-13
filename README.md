@@ -1,65 +1,65 @@
 # LLM-MODEL-ASSIGNMENT
-# HUMAN EMOTION DETECTION USING MACHINE LEARNING
+# Text classification on the Rotten Tomatoes movie review using Bert model
 
 ---
 
-This repository contains a project focused on building and fine-tuning a BERT-based model to classify emotions in text data. The project uses the dair-ai/emotion dataset and leverages the transformers library from Hugging Face along with TensorFlow for model training.
+This repository features a project dedicated to developing and fine-tuning a BERT-based model for text classification on movie review. The project utilizes the rotten tomotoes dataset from Hugging Face for training the model.
 
 ## Table of Contents
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
-- [Model Architecture](#model-architecture)
-- [Training and Fine-Tuning](#training-and-fine-tuning)
-- [Evaluation](#evaluation)
+- [Abstract](#Abstract)
+- [Introduction](#Introduction)
+- [Dataset Overview)](#Dataset-overview)
+- [Data Preprocessing](#Data-Preprocessing)
+- [Model Fine-Tuning](#Model-fine-tuning)
+- [Model Evaluation](#Model-Evaluation)
 - [Results](#results)
-- [License](#license)
-- [Citation](#citation)
-
-## Overview
-This project implements a text classification model to categorize emotions such as joy, sadness, anger, etc., in given text data. The model is based on the BERT (Bidirectional Encoder Representations from Transformers) architecture, which has proven effective in various NLP tasks.
-
-## Dataset
-The dataset used in this project is the dair-ai/emotion dataset from Hugging Face's datasets library. The dataset consists of text samples labeled with different emotions.
-
-- *Training set*: 16,000 samples
-- *Validation set*: 2,000 samples
-- *Test set*: 2,000 samples
+- [Conclusion](#Conclusion)
 
 
-## Exploratory Data Analysis (EDA)
-The project includes an EDA step to understand the distribution of emotions in the dataset. This involves plotting the frequency and proportion of each emotion category in the training, validation, and test sets.
+## Introduction
+This project implements a text classification, particularly sentiment analysis, stands as a fundamental task within Natural Language Processing (NLP). A commonly utilized resource for such binary classification endeavours is the Rotten Tomatoes movie review dataset, sourced from the Cornell Movie-Review Data collection. 
 
-## Model Architecture
-The model uses a pre-trained BERT model from Hugging Face's transformers library. The architecture is as follows:
 
-- *BERT Model*: Extracts contextual embeddings for the input text.
-- *Dense Layer*: A fully connected layer that maps the [CLS] token's output from BERT to the emotion categories using a softmax activation function.
+## Dataset Overview
+The dataset used in this study comprises movie reviews from Rotten Tomatoes, labelled as either 
+positive or negative. The dataset is divided into three subsets:
 
-## Training and Fine-Tuning
-The BERT model is fine-tuned on the emotion classification task using the following settings:
+- *Training set*: 8,530 rows
+- *Validation set*: 1,070 rows
+- *Test set*: 1,070 rows
+Each review in the dataset is assigned a binary sentiment label:
+Positive (1): Indicates a favourable review.
+Negative (0): Indicates an unfavourable review.
 
-- *Optimizer*: Adam with a learning rate of 1e-5
-- *Loss Function*: Sparse Categorical Crossentropy
-- *Metrics*: Accuracy
-- *Epochs*: 8
 
-During training, the model's performance is monitored on the validation set to prevent overfitting.
+## Data Preprocessing
+Before the data is fed into BERT, several preprocessing steps are essential. BERT uses a specific tokenizer that breaks down text into sub word tokens, aligning the input with its pre-trained vocabulary. Additionally, reviews are padded to ensure uniform input sizes for batch processing, and attention masks are created to distinguish between actual content and padding. 
 
-## Evaluation
-The model's performance is evaluated on the test set, achieving the following results:
+## Model Fine-Tuning
+BERT, initiated on a vast corpus of text, requires fine-tuning to adapt to particular tasks like sentiment analysis. Fine-tuning includes further training the model on the Rotten Tomatoes dataset while preserving its general awareness of language. 
+The model is then trained on the 8,530 training rows, with the 1,070 validation rows used to monitor performance and adjust hyperparameters, such as learning rate and batch size, to optimize results. Techniques like early stopping are employed to avoid overfitting.
 
-- *Test Accuracy*: 92.20%
-- *Test Loss*: 0.2231
+## Model Evaluation
+After fine-tuning, the BERT model's performance is assessed using the 1,070 test rows. Key evaluation metrics include accuracy, precision, recall and F1-score which provide a comprehensive view of the model's capability to apply the training to new data.
 
-Confusion matrices and classification reports are also generated to analyze the model's performance across different emotion categories.
 
 ## Results
-The fine-tuned BERT model shows high accuracy in classifying emotions in text, with consistent performance across training, validation, and test datasets. The model's learning curves and confusion matrices are available in the results section.
+Upon fine-tuning, BERT typically achieves high performance on the Rotten Tomatoes dataset. The model generally exhibits an accuracy rate between 90-95%, with similar values for precision, recall, and F1-score. These results demonstrate that BERT is highly effective at capturing the nuanced sentiment in movie reviews, making it a strong candidate for text classification tasks in NLP.
+
+- *Test Accuracy*: 86.02%
+- *Test Loss*: 1.3974
+- *Evaluation runtime*: 3.70 seconds
+- *Evaluation samples per second*: 288.136 samples/second
+- *Evaluation steps per second*: 72.169 steps/second
+- *Epoch*: 9.9953
+
+
+## Conclusion
+Fine-tuning BERT for sentiment analysis on the Rotten Tomatoes dataset, results in a model capable of accurately classifying movie reviews based on sentiment. BERT's success in this task is largely due to its deep bidirectional training and extensive pre-training on large text corpora. Additionally, examining the interpretability of BERT could provide deeper insights into how it processes and classifies text.
 
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](https://huggingface.co/datasets/dair-ai/emotion#licensing-information) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://huggingface.co/datasets/cornell-movie-review-data/rotten_tomatoes) file for details.
 
 ---
 ## Citation
